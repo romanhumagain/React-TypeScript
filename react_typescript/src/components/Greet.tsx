@@ -1,10 +1,19 @@
-type personName = {
+type personNames = {
   name: string
+  messageCount? : number
+  isLoggedin : boolean
 }
 
-const Greet = (props : personName) => {
+const Greet = (props : personNames) => {
+  const {messageCount = 0} = props
   return (
-    <div>Hello MR. {props.name}</div>
+    props.isLoggedin ? (
+      <div>Hello MR. {props.name}. You have {messageCount} unread messages.</div>
+    ):
+    (
+      <p>Welcome Guest !</p>
+    )
+    
   )
 }
 
